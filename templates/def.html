@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>prices</p>
+<p style="display: none;" id="titles">{{ title }}</p>
+<p style="display: none;" id="prices">{{ price }}</p>
+<button onclick="myFunction()">Click to see prices!</button>
+<p id="test"></p>
+
+
+
+ 
+</body>
+<script>
+function myFunction(){
+var str = document.getElementById("prices").innerHTML;
+var nums = str.split(" ");
+
+var str2 = document.getElementById("titles").innerHTML;
+var titles = str2.split(",");
+
+var i;
+var text = "";
+for (i = 0; i < titles.length; i++) {
+    text +="title : " + titles[i] +  "<br>" + "price : " + nums[i] + "<br> <br>" ;
+}
+document.getElementById("test").innerHTML =text;
+
+
+}
+
+
+
+
+
+
+                           
+
+                        
+
+
+</script>
+</html>
