@@ -1,5 +1,4 @@
 import webbrowser
-
 from flask import Flask, render_template, request
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
