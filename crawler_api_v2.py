@@ -60,6 +60,16 @@ def crawler():
 
     return render_template("def.html", price=pricess, title=titless, )
 
+@app.route("/about-team")
+def aboutteam():
+    return render_template("about-tem.html")
+
+@app.route("/about-application")
+def aboutapp():
+    return render_template("about-application.html")
+
+
+
 if __name__ == '__main__':
     url = 'http://127.0.0.1:5000'
     webbrowser.open_new(url)
