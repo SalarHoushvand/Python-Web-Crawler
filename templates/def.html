@@ -2,19 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Game Prices</title>
+    <link href="..\static\stylesheets\style.css"  rel="stylesheet" />
 </head>
-<body>
-<p>prices</p>
+<body onload="myFunction()">
 <p style="display: none;" id="titles">{{ title }}</p>
 <p style="display: none;" id="prices">{{ price }}</p>
-<button onclick="myFunction()">Click to see prices!</button>
+<!-- Table  -->
+<div class="table_div">
+    <table id="table_1" class="table" style="
+     border-collapse: collapse;
+        width: 100%;
+    ">
+        <thead>
+            <tr>
+                <th scope="col">Game Name</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td id="name1">John Doe</td>
+                                <td>Yes</td>
+        </tbody>
+    </table>
+</div>
+
 <p id="test"></p>
-
-
 
  
 </body>
+
+
+
+
+<!-- JS -->
 <script>
 function myFunction(){
 var str = document.getElementById("prices").innerHTML;
@@ -25,13 +46,36 @@ var titles = str2.split(",");
 
 var i;
 var text = "";
+
+var table = document.getElementById("table_1");
+
 for (i = 0; i < titles.length; i++) {
-    text +="title : " + titles[i] +  "<br>" + "price : " + nums[i] + "<br> <br>" ;
+   // text +="title : " + titles[i] +  "<br>" + "price : " + nums[i] + "<br> <br>" ;
+    
+   
+    var row = table.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = titles[i];
+    cell2.innerHTML = nums[i];
+
+    if(cell2.innerHTML == "undefined"){
+        document.getElementById("table_1").deleteRow(1);
+    }
+
+
+    
+
 }
+
+
 document.getElementById("test").innerHTML =text;
 
 
 }
+
+
+
 
 
 

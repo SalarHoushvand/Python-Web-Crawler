@@ -219,6 +219,10 @@ caption {
 
 th {
   text-align: inherit;
+  text-align: left;
+  padding: 8px;
+  background-color: #4CAF50;
+  color: white;
 }
 
 label {
@@ -1685,7 +1689,9 @@ pre code {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  padding: 8px;
+  background-color: #4CAF50;
+  color: black;
 }
 .table thead th {
   vertical-align: bottom;
@@ -10226,6 +10232,41 @@ header.masthead h1 {
   }
 
 
+
+
+table{
+    background-color: transparent;
+    width: 40%;
+    margin-right: 0px;
+    opacity: 0.8;
+}
+
+td {
+    background-color: transparent !important;
+    border: none !important;
+    text-align: left;
+    color: white;
+    padding: 8px;
+
+}
+
+tr{
+    color: #8b0d0d;
+    background-color: transparent;
+}
+
+.table_div{
+    width: 100%;
+}
+
+th{
+  text-align: left;
+  padding: 8px;
+  background-color: #4CAF50;
+  color: black;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
 
 
 

@@ -17,9 +17,9 @@ def first_page():
 def crawler():
     my_url = "https://www.newegg.com/PS4-Video-Games/SubCategory/ID-3141"
 
-    uClient = uReq(my_url)
-    page_html = uClient.read()
-    uClient.close()
+    u_client = uReq(my_url)
+    page_html = u_client.read()
+    u_client.close()
 
     prices = []
     titles = []
@@ -37,37 +37,41 @@ def crawler():
 
         # get product details
         title_container = container.findAll("a", {"class": "item-title"})
-        title = (title_container[0].text)
+        title = title_container[0].text
         titles.append(title)
 
+
         # find price
-        price_list = container.findAll("li", {"class": "price-current"})
+        try:
+            price_list = container.findAll("li", {"class": "price-current"})
+            price1 = price_list[0].strong.text
+            price2 = price_list[0].sup.text
+            price_total = price1 + price2
+            prices.append(price_total)
+            pricess = ' '.join(prices)
+            titless = ' '.join(titles)
+            titless = titless.replace(',', '')
+            titless = titless.replace('-', '')
+            titless = titless.replace(' - PlayStation 4', ',')
+            titless = titless.replace('PlayStation 4', ',')
+            titless = titless.replace('PlayStation', ',')
+            titless = titless.replace('PS4', ',')
+            titless = titless.replace('Final Fantasy XII: The Zodiac Age  , ', '')
 
-        price1 = price_list[0].strong.text
-        price2 = price_list[0].sup.text
-        price_total = price1 + price2
-        prices.append(price_total)
-        pricess = ' '.join(prices)
-        titless = ' '.join(titles)
-        titless = titless.replace(',', '')
-        titless = titless.replace('-', '')
-        titless = titless.replace(' - PlayStation 4', ',')
-        titless = titless.replace('PlayStation 4', ',')
-        titless = titless.replace('PlayStation', ',')
-        titless = titless.replace('PS4', ',')
-
-
+        except:
+            print('An error occurred')
 
     return render_template("def.html", price=pricess, title=titless, )
+
 
 @app.route("/about-team")
 def aboutteam():
     return render_template("about-tem.html")
 
+
 @app.route("/about-application")
 def aboutapp():
     return render_template("about-application.html")
-
 
 
 if __name__ == '__main__':
