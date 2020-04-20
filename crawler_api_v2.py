@@ -70,6 +70,10 @@ def aboutapp():
     return render_template("about-application.html")
 
 
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 if __name__ == '__main__':
     url = 'http://127.0.0.1:5000'
     webbrowser.open_new(url)
