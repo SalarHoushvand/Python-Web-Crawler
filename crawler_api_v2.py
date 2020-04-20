@@ -1,5 +1,5 @@
 import webbrowser
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
@@ -31,15 +31,11 @@ def crawler():
 
     for i in range(0, len(containers)):
         container = containers[i]
-        # find child tag
-        item_info = container.findAll("div", {"class": "item-info"})
-        info = item_info[0]
 
         # get product details
         title_container = container.findAll("a", {"class": "item-title"})
         title = title_container[0].text
         titles.append(title)
-
 
         # find price
         try:
