@@ -1,10 +1,27 @@
 import webbrowser
-from flask import Flask, render_template
+import os
+from flask import Flask, render_template, request, redirect, url_for
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
+from flask_sqlalchemy import SQLAlchemy
 
 # defining Flask and html folder
+basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, template_folder='templates')
+app.config['SQLALCHEMY_DATABASE_URI'] =\
+'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.debug = True
+db = SQLAlchemy(app)
+
+class User(db.Model):
+	__tablename__ = 'users'
+	id = db.Column(db.Integer, primary_key=True)
+	fname = db.Column(db.String(80))
+	lname = db.Column(db.String(80))
+	msg = db.Column(db.String(500))
+	def __repr__(self):
+		return '<User %r>' % self.username
 
 
 # First page
@@ -71,8 +88,17 @@ def aboutapp():
 
 
 @app.route("/contact")
-def contact():
-    return render_template("contact.html")
+def index():
+    return render_template('contact.html')
+
+@app.route('/post_user', methods=['POST'])
+def post_user():
+	db.drop_all()
+	db.create_all()
+	user = User(fname = request.form['fname'], lname=request.form['lname'], msg=request.form['msg'])
+	db.session.add(user)
+	db.session.commit
+	return render_template('contact.html')
 
 if __name__ == '__main__':
     url = 'http://127.0.0.1:5000'
