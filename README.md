@@ -22,4 +22,4 @@ Because we are now inside a virtual environment. We do not need sudo.
 
 Then you can start the server with:
 ```
-python3 crawler_api_v2.py.py
+python3 crawler_api_v2.py
