@@ -1,6 +1,6 @@
 <h4>Team members:<h4>
-<br>Salar Houshvand<br>
-Mark Sokolov
+<br>Salar Houshvand (houshvands19@students.ecu.edu)<br>
+Mark Sokolov (sokolovm19@students.ecu.edu)
 
 Create a virtual environment:
 ```
