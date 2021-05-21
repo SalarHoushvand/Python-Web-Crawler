@@ -1,3 +1,5 @@
+# :space_invader: A web crawler using Python to get Play Station 4 games prices.
+
 <h4>Team members:<h4>
 <br>Salar Houshvand (houshvands19@students.ecu.edu)<br>
 Mark Sokolov (sokolovm19@students.ecu.edu)
